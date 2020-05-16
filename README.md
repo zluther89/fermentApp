@@ -12,24 +12,26 @@ File Structure:
 
 ```›
 Ferment
-│   README.md
-│   package.json
-│   .gitignore
+│  README.md
+│  package.json
+│  .gitignore
 │
 └───dev_images
-│   ferment_WF.png
+│     ferment_WF.png
 │
 └───public
-│   │   file011.txt
-│   │   file012.txt
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
+│     index.html
+│
+└───src
+│     App.js
+│     App.css
+│
+│
+└──server
+│
 │
 └───node_modules
-    │All node dependencies
+    All node dependencies
 ```
 
 ## Available Scripts
