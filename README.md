@@ -23,12 +23,36 @@ Ferment
 │     index.html
 │
 └───src
-│     App.js
-│     App.css
-│
+│   │
+│   │  index.js
+│   │  index.css
+│   │  setupTests.js
+│   └──App
+│      │
+│      │  index.js
+│      │  index.css
+│      │  index.test.js
+│      │
+│      └──Ferments
+│      │  │
+│      │  │  index.js
+│      │  │  index.css
+│      │  │  index.test.js
+│      │
+│      └──NavBar
+│      │  │
+│      │  │  index.js
+│      │  │  index.css
+│      │  │  index.test.css
+│      │
+│      └──NewFermModal
+│         │
+│         │  index.js
+│         │  index.css
+│         │  index.test.css
 │
 └──server
-│
+│    index.js
 │
 └───node_modules
     All node dependencies
