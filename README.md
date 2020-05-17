@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# fermentApp
+# Ferment App
 
 A basic fermentation app for tracking fermented pickles/kombucha/beer/whatever you want. Made with create react app, mongodb, and express.
 
