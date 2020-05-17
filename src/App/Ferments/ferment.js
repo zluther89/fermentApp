@@ -3,11 +3,12 @@ import "./index.css";
 
 function Ferment(props) {
   return (
-    <div className="ferment">
+    <div className="ferment-item">
       <div className="ferment-header">{props.name}</div>
-      <div>{props.type}</div>
-      <div>{props.status}</div>
-      <div></div>
+      <div className="ferment-text">
+        <div>Type:{props.type}</div>
+        <div>Status:{props.status}</div>
+      </div>
     </div>
   );
 }

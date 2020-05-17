@@ -2,11 +2,25 @@
   display: flex;
   justify-content: space-around;
 }
-.ferment {
+.ferment-item {
   margin: 5%;
-  padding: 5%;
+  padding: 2%;
   border: 2px;
   border-color: black;
   border-style: solid;
   border-radius: 5px;
+  width: 100%;
+}
+.ferment-header {
+  font-size: 1.6rem;
+  font-weight: bold;
+  align-self: center;
+}
+.ferment-text {
+  text-align: left;
+  margin-top: 5%;
+  padding: 5%;
+}
+.ferment-text div {
+  margin: 2%;
 }
