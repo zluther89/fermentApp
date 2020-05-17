@@ -1,26 +1,50 @@
 .ferment-container {
   display: flex;
-  justify-content: space-around;
+  align-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 2%;
 }
+
+.center-container {
+  /* display: flex; */
+  justify-content: center;
+  padding-left: 3%;
+}
+
 .ferment-item {
-  margin: 5%;
+  margin: 2%;
   padding: 2%;
   border: 2px;
   border-color: black;
   border-style: solid;
   border-radius: 5px;
-  width: 100%;
+  width: 24%;
 }
 .ferment-header {
   font-size: 1.6rem;
   font-weight: bold;
   align-self: center;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.1rem;
+  padding: 5%;
 }
 .ferment-text {
   text-align: left;
-  margin-top: 5%;
   padding: 5%;
 }
 .ferment-text div {
-  margin: 2%;
+  margin: 5%;
+  font-size: 1.5rem;
+}
+
+.ferment-item button {
+  margin: 5%;
+  height: 2rem;
+  width: 40%;
+  font-weight: bold;
+  border-color: black;
+  border-radius: 6px;
 }
