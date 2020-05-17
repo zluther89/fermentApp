@@ -1,7 +1,12 @@
 .nav {
   display: flex;
   justify-content: space-around;
-  margin-left: 5%;
-  margin-right: 5%;
   align-items: center;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+}
+
+button {
+  border-radius: 10px;
 }
