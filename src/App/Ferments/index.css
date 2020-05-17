@@ -7,8 +7,9 @@
 }
 
 .center-container {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
+  padding-left: 3%;
 }
 
 .ferment-item {
@@ -19,12 +20,12 @@
   border-style: solid;
   border-radius: 5px;
   width: 24%;
-  /* width: 100%; */
 }
 .ferment-header {
   font-size: 1.6rem;
   font-weight: bold;
   align-self: center;
+  text-align: center;
   border-style: solid;
   border-color: black;
   border-width: 0.1rem;
