@@ -10,6 +10,10 @@ function Ferment(props) {
         <div>Type:{props.type}</div>
         <div>Status:{props.status}</div>
       </div>
+      <div className="button-container">
+        <button>Edit Details</button>
+        <button>Stash</button>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@
   justify-content: space-around;
 }
 .ferment-item {
-  margin: 5%;
+  margin: 3%;
   padding: 2%;
   border: 2px;
   border-color: black;
@@ -15,12 +15,25 @@
   font-size: 1.6rem;
   font-weight: bold;
   align-self: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.1rem;
+  padding: 5%;
 }
 .ferment-text {
   text-align: left;
-  margin-top: 5%;
   padding: 5%;
 }
 .ferment-text div {
-  margin: 2%;
+  margin: 5%;
+  font-size: 1.5rem;
+}
+
+.ferment-item button {
+  margin: 5%;
+  height: 2rem;
+  width: 30%;
+  font-weight: bold;
+  border-color: black;
+  border-radius: 6px;
 }
