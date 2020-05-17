@@ -4,9 +4,7 @@ import "./index.css";
 function Ferment(props) {
   return (
     <div className="ferment">
-      <div className="ferment-header">
-        <h3>{props.name}</h3>
-      </div>
+      <div className="ferment-header">{props.name}</div>
       <div>{props.type}</div>
       <div>{props.status}</div>
       <div></div>

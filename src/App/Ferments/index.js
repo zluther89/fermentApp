@@ -9,7 +9,7 @@ const sampleObj = {
 };
 
 function FermContainer() {
-  const [ferments, setFerments] = useState([sampleObj]);
+  const [ferments, setFerments] = useState([sampleObj, sampleObj, sampleObj]);
 
   return (
     <div className="ferment-container">
