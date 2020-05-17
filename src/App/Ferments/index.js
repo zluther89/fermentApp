@@ -6,6 +6,7 @@ const sampleObj = {
   name: "test-name",
   type: "test-type",
   status: "test-status",
+  date: "01/01/2001",
 };
 
 function FermContainer() {
@@ -19,6 +20,7 @@ function FermContainer() {
             name={ferment.name}
             type={ferment.type}
             status={ferment.status}
+            date={ferment.date}
           />
         );
       })}
