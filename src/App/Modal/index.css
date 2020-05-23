@@ -1,3 +1,32 @@
+.new-ferment-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.modal-header {
+  font-size: 2rem;
+  align-self: center;
+}
+
+.label-wrapper {
+  display: flex;
+}
+.label-wrapper .input-form,
+.label-wrapper textarea {
+  width: 80%;
+  margin-left: 2%;
+}
+.label-wrapper label {
+  width: 15%;
+}
+.date-input {
+  width: fit-content;
+  margin-left: 2%;
+}
+.new-ferment-form > * {
+  margin-top: 3%;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -7,14 +36,39 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.new-ferment-form button {
+  border-radius: 10px;
+  padding: 1%;
+  margin: 2%;
+  width: 9rem;
+  font-size: 0.9rem;
+  border-width: 2px;
+  border-color: black;
+  font-weight: bold;
+  align-self: center;
+}
+
+.button-form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1%;
+}
+
 .modal-main {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: white;
-  width: 80%;
-  height: auto;
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px 2px black;
 }
 
 .display-block {
