@@ -1,14 +1,14 @@
 import React from "react";
 import "./index.css";
 
-function Ferment(props) {
+function Ferment({ name, date, type, status }) {
   return (
     <div className="ferment-item">
-      <div className="ferment-header">{props.name}</div>
+      <div className="ferment-header">{name}</div>
       <div className="ferment-text">
-        <div>Start Date:{props.date}</div>
-        <div>Type:{props.type}</div>
-        <div>Status:{props.status}</div>
+        <div>Start Date:{date}</div>
+        <div>Type:{type}</div>
+        <div>Status:{status}</div>
       </div>
       <div className="button-container">
         <button>Edit Details</button>

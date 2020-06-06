@@ -1,9 +1,17 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./index.js";
+import Modal from "./Modal/index.js";
+import FermContainer from "./Ferments/index.js";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("should not render if show if false", () => {
+  const wrapper = shallow(<App />);
+  // const modalWrapper = shallow(<Modal />);
+  expect(wrapper.contains(<Modal />)).toBe(false);
+});
+
+it("should render the ferm container", () => {
+  const wrapper = shallow(<App />);
+  // const modalWrapper = shallow(<Modal />);
+  expect(wrapper.contains(<FermContainer />)).toBe(true);
 });
