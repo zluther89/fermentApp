@@ -71,10 +71,10 @@
   box-shadow: 0 0 6px 2px black;
 }
 
-.display-block {
+.modal-display-block {
   display: block;
 }
 
-.display-none {
+.modal-display-none {
   display: none;
 }

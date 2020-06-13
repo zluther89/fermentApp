@@ -27,7 +27,7 @@ function FermContainer() {
               type={ferment.type}
               status={ferment.status}
               date={ferment.date}
-              key={ferment.date}
+              key={Math.random()}
             />
           );
         })}

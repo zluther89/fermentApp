@@ -10,7 +10,7 @@ function Nav({ children }) {
       </div>
       <div>{children}</div>
       <div>
-        <label for="search">Search:</label>
+        <label htmlFor="search">Search:</label>
         <input name="search"></input>
       </div>
       <div>

@@ -2,7 +2,9 @@ import React from "react";
 import "./index.css";
 
 function Modal({ show, handleClose }) {
-  const showHide = show ? "modal display-block" : "modal display-none";
+  const showHide = show
+    ? "modal modal-display-block"
+    : "modal modal-display-none";
   return (
     <div className={showHide}>
       <section className="modal-main">
