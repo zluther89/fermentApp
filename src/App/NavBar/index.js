@@ -1,7 +1,7 @@
 import React from "react";
 // import Modal from "../Modal";
 import "./index.css";
-import { component } from "prop-types";
+import { element } from "prop-types";
 
 function Nav({ children }) {
   return (
@@ -24,7 +24,7 @@ function Nav({ children }) {
 }
 
 Nav.propTypes = {
-  children: component.isRequired,
+  children: element.isRequired,
 };
 
 export default Nav;
