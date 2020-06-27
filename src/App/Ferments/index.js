@@ -1,22 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css";
+import { arrayOf, shape, string } from "prop-types";
 import Ferment from "./ferment";
 
-const sampleObj = {
-  name: "test-name",
-  type: "test-type",
-  status: "test-status",
-  date: "01/01/2001",
-};
-
-function FermContainer() {
-  const [ferments, setFerments] = useState([
-    sampleObj,
-    sampleObj,
-    sampleObj,
-    sampleObj,
-  ]);
-
+function FermContainer({ ferments }) {
   return (
     <div className="center-container">
       <div className="ferment-container">
@@ -36,4 +23,18 @@ function FermContainer() {
   );
 }
 
+FermContainer.defaultProps = {
+  ferments: [],
+};
+
+FermContainer.propTypes = {
+  ferments: arrayOf(
+    shape({
+      name: string.isRequired,
+      type: string.isRequired,
+      status: string.isRequired,
+      date: string.isRequired,
+    })
+  ),
+};
 export default FermContainer;

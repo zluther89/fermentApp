@@ -1,10 +1,6 @@
-import Modal from "./index.js";
 import React from "react";
 import { shallow, mount } from "enzyme";
-
-it("should run a test", () => {
-  expect(true);
-});
+import Modal from "./index";
 
 it("should render without crashing", () => {
   shallow(<Modal />);
@@ -32,12 +28,25 @@ it("should test the wrapper correctly", () => {
 });
 
 it("should render a start date label", () => {
-  let wrapper = shallow(<Modal show={true} />);
-  let startLabel = <label>Start Date:</label>;
+  const setDate = () => {};
+  const wrapper = shallow(<Modal show />);
+  const startLabel = (
+    <label htmlFor="date-input">
+      Start Date:
+      <input
+        id="date-input"
+        className="date-input"
+        type="date"
+        onChange={(e) => {
+          setDate(e.target.value);
+        }}
+      />
+    </label>
+  );
   expect(wrapper.contains(startLabel)).toBe(true);
 });
 
-it("should not render Modal if show is false", () => {
+it("should not render Modal if show is not present", () => {
   const wrapper = mount(<Modal />);
 
   // const modalWrapper = shallow(<Modal />);
@@ -46,7 +55,7 @@ it("should not render Modal if show is false", () => {
 });
 
 it("should render Modal if show is true", () => {
-  const wrapper = mount(<Modal show={true} />);
+  const wrapper = mount(<Modal show />);
 
   // const modalWrapper = shallow(<Modal />);
   expect(wrapper.find(".modal-display-none").length).toBe(0);

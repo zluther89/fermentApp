@@ -1,7 +1,7 @@
-import Ferment from "./ferment.js";
-import FermContainer from "./index.js";
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
+import Ferment from "./ferment";
+import FermContainer from "./index";
 
 describe("Single Ferment Tests", () => {
   it("should render without warnings", () => {
@@ -12,8 +12,8 @@ describe("Single Ferment Tests", () => {
     const wrapper = shallow(<Ferment />);
     const buttonContainer = (
       <div className="button-container">
-        <button>Edit Details</button>
-        <button>Stash</button>
+        <button type="submit">Edit Details</button>
+        <button type="submit">Stash</button>
       </div>
     );
     expect(wrapper.contains(buttonContainer)).toEqual(true);
@@ -26,7 +26,20 @@ describe("FermContainer tests", () => {
   });
 
   it("should find 4 ferments based on sample data", () => {
-    let wrapper = shallow(<FermContainer />);
-    expect(wrapper.find(Ferment)).toHaveLength(4);
+    const sampleObj = {
+      name: "test-name",
+      type: "test-type",
+      status: "test-status",
+      date: "01/01/2001",
+    };
+
+    const sampleFermSet = [sampleObj, sampleObj, sampleObj, sampleObj];
+    const wrapper = mount(<FermContainer ferments={sampleFermSet} />);
+    expect(wrapper.find(".ferment-item")).toHaveLength(4);
+  });
+
+  it("should find 0 ferments when data is empty", () => {
+    const wrapper = mount(<FermContainer />);
+    expect(wrapper.find(".ferment-item")).toHaveLength(0);
   });
 });

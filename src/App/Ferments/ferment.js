@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import { string } from "prop-types";
 
 function Ferment({ name, date, type, status }) {
   return (
@@ -11,11 +12,22 @@ function Ferment({ name, date, type, status }) {
         <div>Status:{status}</div>
       </div>
       <div className="button-container">
-        <button>Edit Details</button>
-        <button>Stash</button>
+        <button type="submit">Edit Details</button>
+        <button type="submit">Stash</button>
       </div>
     </div>
   );
 }
+
+Ferment.defaultProps = {
+  status: null,
+};
+
+Ferment.propTypes = {
+  name: string.isRequired,
+  date: string.isRequired,
+  type: string.isRequired,
+  status: string,
+};
 
 export default Ferment;

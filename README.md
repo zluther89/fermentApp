@@ -35,6 +35,7 @@ Ferment
 │      │
 │      └──Ferments
 │      │  │
+│      │  │  ferment.js
 │      │  │  index.js
 │      │  │  index.css
 │      │  │  index.test.js

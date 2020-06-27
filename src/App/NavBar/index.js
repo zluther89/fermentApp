@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 // import Modal from "../Modal";
 import "./index.css";
+import { component } from "prop-types";
 
 function Nav({ children }) {
   return (
@@ -10,14 +11,20 @@ function Nav({ children }) {
       </div>
       <div>{children}</div>
       <div>
-        <label htmlFor="search">Search:</label>
-        <input name="search"></input>
+        <label htmlFor="search">
+          Search:
+          <input name="search" />
+        </label>
       </div>
       <div>
-        <button>User Guide</button>
+        <button type="submit">User Guide</button>
       </div>
     </div>
   );
 }
+
+Nav.propTypes = {
+  children: component.isRequired,
+};
 
 export default Nav;
