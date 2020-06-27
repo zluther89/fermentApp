@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
-import { func } from "prop-types";
+import { func, bool } from "prop-types";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -81,8 +81,12 @@ function Modal({ show, handleClose, addHandler }) {
   );
 }
 
+Modal.defaultProps = {
+  show: false,
+};
+
 Modal.propTypes = {
-  show: func.isRequired,
+  show: bool,
   handleClose: func.isRequired,
   addHandler: func.isRequired,
 };

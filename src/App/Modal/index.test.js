@@ -3,7 +3,7 @@ import { shallow, mount } from "enzyme";
 import Modal from "./index";
 
 it("should render without crashing", () => {
-  shallow(<Modal />);
+  mount(<Modal show handleClose={() => {}} addHandler={() => {}} />);
 });
 
 it("should test the wrapper correctly", () => {
@@ -28,26 +28,15 @@ it("should test the wrapper correctly", () => {
 });
 
 it("should render a start date label", () => {
-  const setDate = () => {};
-  const wrapper = shallow(<Modal show />);
-  const startLabel = (
-    <label htmlFor="date-input">
-      Start Date:
-      <input
-        id="date-input"
-        className="date-input"
-        type="date"
-        onChange={(e) => {
-          setDate(e.target.value);
-        }}
-      />
-    </label>
+  const wrapper = mount(
+    <Modal show handleClose={() => {}} addHandler={() => {}} />
   );
-  expect(wrapper.contains(startLabel)).toBe(true);
+
+  expect(wrapper.find(".date-input").length).toBe(1);
 });
 
 it("should not render Modal if show is not present", () => {
-  const wrapper = mount(<Modal />);
+  const wrapper = mount(<Modal handleClose={() => {}} addHandler={() => {}} />);
 
   // const modalWrapper = shallow(<Modal />);
   expect(wrapper.find(".modal-display-none").length).toBe(1);
@@ -55,7 +44,9 @@ it("should not render Modal if show is not present", () => {
 });
 
 it("should render Modal if show is true", () => {
-  const wrapper = mount(<Modal show />);
+  const wrapper = mount(
+    <Modal show handleClose={() => {}} addHandler={() => {}} />
+  );
 
   // const modalWrapper = shallow(<Modal />);
   expect(wrapper.find(".modal-display-none").length).toBe(0);

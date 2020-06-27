@@ -14,10 +14,10 @@ const sampleObj = {
 function App() {
   const [show, setModal] = useState(false);
   const [ferments, setFerments] = useState([
-    sampleObj,
-    sampleObj,
-    sampleObj,
-    sampleObj,
+    { ...sampleObj },
+    { ...sampleObj },
+    { ...sampleObj },
+    { ...sampleObj },
   ]);
 
   function showModal(e) {
@@ -34,8 +34,14 @@ function App() {
     e.preventDefault();
     // needs to set ferment in local state
     setFerments([...ferments, fermObj]);
-
     // when back end is set up needs to post ferment to db
+  }
+
+  // at the moment this simply removes ferment from state, this will need to be in tandem with a function that
+  // stashes the ferment in a db
+  function removeFerment(ferm) {
+    const newFerments = ferments.filter((ferment) => ferment !== ferm);
+    setFerments(newFerments);
   }
 
   return (
@@ -49,7 +55,7 @@ function App() {
         </Nav>
       </div>
       <div className="ferm-container">
-        <FermContainer ferments={ferments} />
+        <FermContainer ferments={ferments} removeHandler={removeFerment} />
       </div>
     </div>
   );
