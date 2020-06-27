@@ -1,16 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Ferment App
+# fermentApp
 
 A basic fermentation app for tracking fermented pickles/kombucha/beer/whatever you want. Made with create react app, mongodb, and express.
 
 Wireframe for the main page:
 
-![Main page wireframe](dev_images/ferment_WF.png)
-
-Wireframe for the add ferment modal
-
-![Add ferment modal wireframe](dev_images/WireFrameModal.png)
+![Main Page Wireframe](dev_images/ferment_WF.png)
 
 File Structure:
 
@@ -39,10 +35,10 @@ Ferment
 │      │
 │      └──Ferments
 │      │  │
+│      │  │  ferment.js
 │      │  │  index.js
 │      │  │  index.css
 │      │  │  index.test.js
-│      │  │  ferment.js
 │      │
 │      └──NavBar
 │      │  │
