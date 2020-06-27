@@ -1,6 +1,6 @@
 .ferment-container {
   display: flex;
-  align-content: flex-start;
+  align-content: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 2%;
@@ -9,6 +9,7 @@
 .center-container {
   /* display: flex; */
   justify-content: center;
+  align-content: center;
   padding-left: 3%;
 }
 
@@ -19,7 +20,7 @@
   border-color: black;
   border-style: solid;
   border-radius: 5px;
-  width: 24%;
+  min-width: 24%;
 }
 .ferment-header {
   font-size: 1.6rem;

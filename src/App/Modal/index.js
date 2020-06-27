@@ -43,7 +43,7 @@ function Modal({ show, handleClose, addHandler }) {
             <label htmlFor="date-input">
               Start Date:
               <input
-                id="date-input"
+                name="date-input"
                 className="date-input"
                 type="date"
                 onChange={(e) => {
