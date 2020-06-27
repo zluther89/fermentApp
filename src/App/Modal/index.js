@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
-import { func } from "prop-types";
+import { func, bool } from "prop-types";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -18,49 +18,41 @@ function Modal({ show, handleClose, addHandler }) {
         <div className="modal-header">Create New Ferment</div>
         <form className="new-ferment-form">
           <div className="label-wrapper">
-            <label htmlFor="name-input">
-              Name:
-              <input
-                id="name-input"
-                className="input-form"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </label>
+            <label htmlFor="name-input">Name:</label>
+            <input
+              id="name-input"
+              className="input-form"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div className="label-wrapper">
-            <label htmlFor="status-input">
-              Status:
-              <input
-                id="status-input"
-                className="input-form"
-                onChange={(e) => setStatus(e.target.value)}
-              />
-            </label>
+            <label htmlFor="status-input">Status:</label>
+            <input
+              id="status-input"
+              className="input-form"
+              onChange={(e) => setStatus(e.target.value)}
+            />
           </div>
           <div className="label-wrapper">
-            <label htmlFor="date-input">
-              Start Date:
-              <input
-                name="date-input"
-                className="date-input"
-                type="date"
-                onChange={(e) => {
-                  setDate(e.target.value);
-                }}
-              />
-            </label>
+            <label htmlFor="date-input">Start Date:</label>
+            <input
+              name="date-input"
+              className="date-input"
+              type="date"
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+            />
           </div>
           <div className="label-wrapper">
-            <label htmlFor="description-input">
-              Description:
-              <textarea
-                id="description-input"
-                className="input-form modal-description"
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </label>
+            <label htmlFor="description-input">Description:</label>
+            <textarea
+              id="description-input"
+              className="input-form modal-description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className="button-form-wrapper">
             <button
@@ -81,8 +73,12 @@ function Modal({ show, handleClose, addHandler }) {
   );
 }
 
+Modal.defaultProps = {
+  show: false,
+};
+
 Modal.propTypes = {
-  show: func.isRequired,
+  show: bool,
   handleClose: func.isRequired,
   addHandler: func.isRequired,
 };
