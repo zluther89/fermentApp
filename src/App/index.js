@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import Nav from "./NavBar";
 import FermContainer from "./Ferments";
 import Modal from "./Modal";
+import FermentDetail from "./FermentDetail";
 
 const sampleObj = {
   name: "test-name",
@@ -63,6 +64,10 @@ function App() {
           render={() => (
             <FermContainer ferments={ferments} removeHandler={removeFerment} />
           )}
+        />
+        <Route
+          path="/fermentdetail"
+          render={() => <FermentDetail ferment={sampleObj} />}
         />
       </Router>
     </div>

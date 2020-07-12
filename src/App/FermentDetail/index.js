@@ -1,14 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, shape } from "prop-types";
 
-function FermentDetail({ name, status, date, description }) {
-  return <div>{(name, status, date, description)}</div>;
+function FermentDetail({ ferment }) {
+  const { name, status, date, type, description } = ferment;
+  return (
+    <div>
+      <div>{name}</div>
+      <div>{status}</div>
+      <div>{date}</div>
+      <div>{description}</div>
+      <div>{type}</div>
+    </div>
+  );
 }
+
 FermentDetail.propTypes = {
-  name: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  ferment: shape({
+    name: string.isRequired,
+    type: string.isRequired,
+    status: string.isRequired,
+    date: string.isRequired,
+    description: string.isRequired,
+  }).isRequired,
 };
 
 export default FermentDetail;
