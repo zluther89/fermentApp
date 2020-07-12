@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./index.css";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import Nav from "./NavBar";
 import FermContainer from "./Ferments";
 import Modal from "./Modal";
+import FermentDetail from "./FermentDetail";
 
 const sampleObj = {
   name: "test-name",
   type: "test-type",
   status: "test-status",
   date: "01/01/2001",
+  description: "sample descriptions",
 };
 
 function App() {
@@ -54,9 +57,19 @@ function App() {
           </button>
         </Nav>
       </div>
-      <div className="ferm-container">
-        <FermContainer ferments={ferments} removeHandler={removeFerment} />
-      </div>
+      <Router>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <FermContainer ferments={ferments} removeHandler={removeFerment} />
+          )}
+        />
+        <Route
+          path="/fermentdetail"
+          render={() => <FermentDetail ferment={sampleObj} />}
+        />
+      </Router>
     </div>
   );
 }

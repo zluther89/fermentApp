@@ -38,7 +38,6 @@ it("should render a start date label", () => {
 it("should not render Modal if show is not present", () => {
   const wrapper = mount(<Modal handleClose={() => {}} addHandler={() => {}} />);
 
-  // const modalWrapper = shallow(<Modal />);
   expect(wrapper.find(".modal-display-none").length).toBe(1);
   expect(wrapper.find(".modal-display-block").length).toBe(0);
 });
@@ -48,7 +47,6 @@ it("should render Modal if show is true", () => {
     <Modal show handleClose={() => {}} addHandler={() => {}} />
   );
 
-  // const modalWrapper = shallow(<Modal />);
   expect(wrapper.find(".modal-display-none").length).toBe(0);
   expect(wrapper.find(".modal-display-block").length).toBe(1);
 });

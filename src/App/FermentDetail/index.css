@@ -1,0 +1,22 @@
+.ferment-detail-header {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.ferment-detail-master-container {
+  margin-top: 1%;
+  margin-left: 10%;
+  font-size: 1.5rem;
+}
+
+.ferment-detail-entry {
+  display: flex;
+  margin: 2%;
+  align-items: center;
+  font-size: 1em;
+}
+
+.ferment-detail-entry-header {
+  margin-right: 1%;
+  font-size: 1.5em;
+}

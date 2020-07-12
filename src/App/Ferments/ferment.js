@@ -3,13 +3,14 @@ import "./index.css";
 import { string, func, shape } from "prop-types";
 
 function FermentComp({ ferment, removeHandler }) {
+  const { name, date, type, status } = ferment;
   return (
     <div className="ferment-item">
-      <div className="ferment-header">{ferment.name}</div>
+      <div className="ferment-header">{name}</div>
       <div className="ferment-text">
-        <div>Start Date:{ferment.date}</div>
-        <div>Type:{ferment.type}</div>
-        <div>Status:{ferment.status}</div>
+        <div>Start Date:{date}</div>
+        <div>Type:{type}</div>
+        <div>Status:{status}</div>
       </div>
       <div className="button-container">
         <button type="submit">Edit Details</button>
