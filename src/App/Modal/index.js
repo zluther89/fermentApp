@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import { func, bool } from "prop-types";
+import axios from "axios";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -8,9 +9,30 @@ function Modal({ show, handleClose, addHandler }) {
     : "modal modal-display-none";
 
   const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState([{ status: "status" }]);
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+
+  async function getAllStatus() {
+    let res;
+    try {
+      res = await axios.get("http://localhost:3010/status");
+      return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAllStatus();
+      if (data) {
+        setStatus(data);
+      }
+      console.log(status);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className={showHide}>
@@ -29,11 +51,15 @@ function Modal({ show, handleClose, addHandler }) {
           </div>
           <div className="label-wrapper">
             <label htmlFor="status-input">Status:</label>
-            <input
-              id="status-input"
+            <select
+              name="status-input"
               className="input-form"
-              onChange={(e) => setStatus(e.target.value)}
-            />
+              id="status-input"
+            >
+              {status.map((st) => {
+                return <option value={st.status}>{st.status}</option>;
+              })}
+            </select>
           </div>
           <div className="label-wrapper">
             <label htmlFor="date-input">Start Date:</label>
