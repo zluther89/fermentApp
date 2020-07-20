@@ -9,29 +9,23 @@ function Modal({ show, handleClose, addHandler }) {
     : "modal modal-display-none";
 
   const [name, setName] = useState("");
-  const [status, setStatus] = useState([{ status: "status" }]);
+  const [statusOps, setStatusOps] = useState([{ status: "status" }]);
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  // const [typeOps, setTypeOps] = useState("");
+  const [status, setStatus] = useState([]);
 
   async function getAllStatus() {
-    let res;
     try {
-      res = await axios.get("http://localhost:3010/status");
-      return res.data;
+      const res = await axios.get("http://localhost:3010/status");
+      setStatusOps(res.data);
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await getAllStatus();
-      if (data) {
-        setStatus(data);
-      }
-      console.log(status);
-    }
-    fetchData();
+    getAllStatus();
   }, []);
 
   return (
@@ -54,9 +48,9 @@ function Modal({ show, handleClose, addHandler }) {
             <select
               name="status-input"
               className="input-form"
-              id="status-input"
+              onBlur={(e) => setStatus(e.target.value)}
             >
-              {status.map((st) => {
+              {statusOps.map((st) => {
                 return <option value={st.status}>{st.status}</option>;
               })}
             </select>
