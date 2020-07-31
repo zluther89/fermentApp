@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import { Link } from "react-router-dom";
 import { string, func, shape } from "prop-types";
 
 function FermentComp({ ferment, removeHandler }) {
@@ -13,7 +14,9 @@ function FermentComp({ ferment, removeHandler }) {
         <div>Status:{status}</div>
       </div>
       <div className="button-container">
-        <button type="submit">Edit Details</button>
+        <Link to="/fermentdetail">
+          <button type="submit">Edit Details</button>
+        </Link>
         <button
           type="submit"
           onClick={() => {

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Route, BrowserRouter as Router } from "react-router-dom";
+import Axios from "axios";
 import Nav from "./NavBar";
 import FermContainer from "./Ferments";
 import Modal from "./Modal";
@@ -22,6 +23,25 @@ function App() {
     { ...sampleObj },
     { ...sampleObj },
   ]);
+
+  async function getFerments() {
+    return Axios.get("/ferments");
+  }
+
+  async function setFermentState() {
+    try {
+      const { data: results } = await getFerments();
+
+      const state = results.map(function mapResHeaders(res) {
+        res.date = res.create_date;
+        delete res.create_date;
+        return res;
+      });
+      setFerments(state);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 
   function showModal(e) {
     e.preventDefault();
@@ -46,6 +66,10 @@ function App() {
     const newFerments = ferments.filter((ferment) => ferment !== ferm);
     setFerments(newFerments);
   }
+
+  useEffect(() => {
+    setFermentState();
+  });
 
   return (
     <div className="App">

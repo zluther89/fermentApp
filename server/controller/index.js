@@ -1,12 +1,11 @@
 const { getAllFerments, selectAllTypes, selectAllStatus } = require("../model");
-const { isFunctionDeclaration } = require("typescript");
 
 module.exports = {
   ferments: {
     get: async function (req, res) {
       try {
-        const response = await getAllFerments();
-        res.send(response.rows);
+        const { rows: response } = await getAllFerments();
+        res.send(response);
       } catch (e) {
         console.log(e);
         res.sendStatus(400);
