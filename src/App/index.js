@@ -7,17 +7,17 @@ import FermContainer from "./Ferments";
 import Modal from "./Modal";
 import FermentDetail from "./FermentDetail";
 
-// const sampleObj = {
-//   name: "test-name",
-//   type: "test-type",
-//   status: "test-status",
-//   date: "01/01/2001",
-//   description: "sample descriptions",
-// };
+const sampleObj = {
+  name: "test-name",
+  type: "test-type",
+  status: "test-status",
+  date: "01/01/2001",
+  description: "sample descriptions",
+};
 
 function App() {
   const [show, setModal] = useState(false);
-  const [ferments, setFerments] = useState([]);
+  const [ferments, setFerments] = useState([sampleObj, sampleObj, sampleObj]);
 
   async function getFerments() {
     return Axios.get("/ferments");
