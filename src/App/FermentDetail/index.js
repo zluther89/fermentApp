@@ -1,9 +1,11 @@
 import React from "react";
 import "./index.css";
-import { string, shape } from "prop-types";
+import { useLocation } from "react-router-dom";
 
-function FermentDetail({ ferment }) {
+function FermentDetail() {
+  const { ferment } = useLocation();
   const { name, status, date, type, description } = ferment;
+
   return (
     <div className="ferment-detail-master-container">
       <div className="ferment-detail-header">
@@ -32,15 +34,5 @@ function FermentDetail({ ferment }) {
     </div>
   );
 }
-
-FermentDetail.propTypes = {
-  ferment: shape({
-    name: string.isRequired,
-    type: string.isRequired,
-    status: string.isRequired,
-    date: string.isRequired,
-    description: string.isRequired,
-  }).isRequired,
-};
 
 export default FermentDetail;

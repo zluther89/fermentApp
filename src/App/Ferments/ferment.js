@@ -14,7 +14,12 @@ function FermentComp({ ferment, removeHandler }) {
         <div>Status:{status}</div>
       </div>
       <div className="button-container">
-        <Link to="/fermentdetail">
+        <Link
+          to={{
+            pathname: "/fermentdetail",
+            ferment,
+          }}
+        >
           <button type="submit">Edit Details</button>
         </Link>
         <button

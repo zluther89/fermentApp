@@ -7,40 +7,20 @@ import FermContainer from "./Ferments";
 import Modal from "./Modal";
 import FermentDetail from "./FermentDetail";
 
-const sampleObj = {
-  name: "test-name",
-  type: "test-type",
-  status: "test-status",
-  date: "01/01/2001",
-  description: "sample descriptions",
-};
+// const sampleObj = {
+//   name: "test-name",
+//   type: "test-type",
+//   status: "test-status",
+//   date: "01/01/2001",
+//   description: "sample descriptions",
+// };
 
 function App() {
   const [show, setModal] = useState(false);
-  const [ferments, setFerments] = useState([
-    { ...sampleObj },
-    { ...sampleObj },
-    { ...sampleObj },
-    { ...sampleObj },
-  ]);
+  const [ferments, setFerments] = useState([]);
 
   async function getFerments() {
     return Axios.get("/ferments");
-  }
-
-  async function setFermentState() {
-    try {
-      const { data: results } = await getFerments();
-
-      const state = results.map(function mapResHeaders(res) {
-        res.date = res.create_date;
-        delete res.create_date;
-        return res;
-      });
-      setFerments(state);
-    } catch (e) {
-      console.warn(e);
-    }
   }
 
   function showModal(e) {
@@ -68,8 +48,22 @@ function App() {
   }
 
   useEffect(() => {
+    async function setFermentState() {
+      try {
+        const { data: results } = await getFerments();
+
+        const state = results.map(function mapResHeaders(res) {
+          res.date = res.create_date;
+          delete res.create_date;
+          return res;
+        });
+        setFerments(state);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
     setFermentState();
-  });
+  }, []);
 
   return (
     <div className="App">
@@ -89,10 +83,7 @@ function App() {
             <FermContainer ferments={ferments} removeHandler={removeFerment} />
           )}
         />
-        <Route
-          path="/fermentdetail"
-          render={() => <FermentDetail ferment={sampleObj} />}
-        />
+        <Route path="/fermentdetail" render={() => <FermentDetail />} />
       </Router>
     </div>
   );
