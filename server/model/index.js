@@ -17,8 +17,13 @@ module.exports = {
   },
 
   insertNewFerment: function (data) {
-    const { name, description, startDate, typeId, statusId } = data;
-    return db.query("");
+    const { name, description, date, typeId, statusId } = data;
+    const q = {
+      text: `INSERT INTO ferments(name, description, create_date, type_id_fkey,status_id_fkey)
+         values($1, $2, $3, $4, $5)`,
+      values: [name, description, startDate, typeId, statusId],
+    };
+    return db.query(q);
   },
 
   selectAllStatus: function () {

@@ -9,16 +9,26 @@ function Modal({ show, handleClose, addHandler }) {
     : "modal modal-display-none";
 
   const [name, setName] = useState("");
-  const [statusOps, setStatusOps] = useState([{ status: "status" }]);
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  // const [typeOps, setTypeOps] = useState("");
   const [status, setStatus] = useState([]);
+  const [type, setType] = useState();
 
+  const [statusOps, setStatusOps] = useState([{ status: "status" }]);
+  const [typeOps, setTypeOps] = useState([{ status: "status" }]);
   async function getAllStatus() {
     try {
-      const res = await axios.get("http://localhost:3010/status");
-      setStatusOps(res.data);
+      const { data: res } = await axios.get("/status");
+      setStatusOps(res);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+
+  async function getAllTypes() {
+    try {
+      const { data: res } = await axios.get("/types");
+      setTypeOps(res);
     } catch (e) {
       console.warn(e);
     }
@@ -26,6 +36,7 @@ function Modal({ show, handleClose, addHandler }) {
 
   useEffect(() => {
     getAllStatus();
+    getAllTypes();
   }, []);
 
   return (
@@ -51,7 +62,19 @@ function Modal({ show, handleClose, addHandler }) {
               onBlur={(e) => setStatus(e.target.value)}
             >
               {statusOps.map((st) => {
-                return <option value={st.status}>{st.status}</option>;
+                return <option value={st}>{st.status}</option>;
+              })}
+            </select>
+          </div>
+          <div className="label-wrapper">
+            <label htmlFor="type-input">Type:</label>
+            <select
+              name="type-input"
+              className="input-form"
+              onBlur={(e) => setType(e.target.value)}
+            >
+              {typeOps.map((t) => {
+                return <option value={t}>{t.name}</option>;
               })}
             </select>
           </div>
