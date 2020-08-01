@@ -1,4 +1,9 @@
-const { getAllFerments, selectAllTypes, selectAllStatus } = require("../model");
+const {
+  getAllFerments,
+  selectAllTypes,
+  selectAllStatus,
+  insertNewFerment,
+} = require("../model");
 
 module.exports = {
   ferments: {
@@ -6,6 +11,16 @@ module.exports = {
       try {
         const { rows: response } = await getAllFerments();
         res.send(response);
+      } catch (e) {
+        console.log(e);
+        res.sendStatus(400);
+      }
+    },
+    post: async function (req, res) {
+      try {
+        const { body: data } = req;
+        await insertNewFerment(data);
+        res.send(200);
       } catch (e) {
         console.log(e);
         res.sendStatus(400);

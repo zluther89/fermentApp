@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { ferments, types, status } = require("../controller");
 
 router.get("/ferments", ferments.get);
+router.post("/ferments", ferments.post);
 
 router.get("/types", types.get);
 

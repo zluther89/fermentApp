@@ -37,6 +37,7 @@ function App() {
     e.preventDefault();
     // needs to set ferment in local state
     setFerments([...ferments, fermObj]);
+
     // when back end is set up needs to post ferment to db
   }
 
@@ -51,7 +52,6 @@ function App() {
     async function setFermentState() {
       try {
         const { data: results } = await getFerments();
-
         const state = results.map(function mapResHeaders(res) {
           res.date = res.create_date;
           delete res.create_date;

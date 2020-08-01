@@ -11,11 +11,13 @@ function Modal({ show, handleClose, addHandler }) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState([]);
-  const [type, setType] = useState();
-
   const [statusOps, setStatusOps] = useState([{ status: "status" }]);
+  const [status, setStatus] = useState();
+  const [statusId, setStatusId] = useState();
+
   const [typeOps, setTypeOps] = useState([{ status: "status" }]);
+  const [type, setType] = useState();
+  const [typeId, setTypeId] = useState();
   async function getAllStatus() {
     try {
       const { data: res } = await axios.get("/status");
@@ -39,6 +41,26 @@ function Modal({ show, handleClose, addHandler }) {
     getAllTypes();
   }, []);
 
+  useEffect(() => {
+    let id;
+    statusOps.forEach((statusOp) => {
+      if (statusOp.status === status) {
+        id = statusOp.id;
+      }
+    });
+    setStatusId(id);
+  }, [status, statusOps]);
+
+  useEffect(() => {
+    let id;
+    typeOps.forEach((typeOp) => {
+      if (typeOp.name === type) {
+        id = typeOp.id;
+      }
+    });
+    setTypeId(id);
+  }, [type, typeOps]);
+
   return (
     <div className={showHide}>
       <section className="modal-main">
@@ -59,10 +81,12 @@ function Modal({ show, handleClose, addHandler }) {
             <select
               name="status-input"
               className="input-form"
-              onBlur={(e) => setStatus(e.target.value)}
+              onBlur={(e) => {
+                setStatus(e.target.value);
+              }}
             >
               {statusOps.map((st) => {
-                return <option value={st}>{st.status}</option>;
+                return <option value={st.status}>{st.status}</option>;
               })}
             </select>
           </div>
@@ -74,7 +98,7 @@ function Modal({ show, handleClose, addHandler }) {
               onBlur={(e) => setType(e.target.value)}
             >
               {typeOps.map((t) => {
-                return <option value={t}>{t.name}</option>;
+                return <option value={t.name}>{t.name}</option>;
               })}
             </select>
           </div>
@@ -101,7 +125,15 @@ function Modal({ show, handleClose, addHandler }) {
             <button
               type="submit"
               onClick={(e) =>
-                addHandler(e, { name, status, date, description })
+                addHandler(e, {
+                  name,
+                  status,
+                  date,
+                  description,
+                  statusId,
+                  type,
+                  typeId,
+                })
               }
             >
               Submit

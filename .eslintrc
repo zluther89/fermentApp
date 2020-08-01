@@ -11,6 +11,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": ["error"],
     "no-console": ["error", { "allow": ["warn", "error"] }],
+    "jsx-a11y/no-onchange": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
