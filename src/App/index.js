@@ -33,10 +33,15 @@ function App() {
     setModal(false);
   }
 
-  function addFerment(e, fermObj) {
-    e.preventDefault();
+  function addFerment(event, fermObj) {
+    event.preventDefault();
+    try {
+      Axios.post("/ferments", fermObj);
+      setFerments([...ferments, fermObj]);
+    } catch (e) {
+      console.warn(e);
+    }
     // needs to set ferment in local state
-    setFerments([...ferments, fermObj]);
 
     // when back end is set up needs to post ferment to db
   }
