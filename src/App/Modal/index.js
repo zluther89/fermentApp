@@ -79,7 +79,7 @@ function Modal({ show, handleClose, addHandler }) {
           <div className="label-wrapper">
             <label htmlFor="status-input">Status:</label>
             <select
-              name="status-input"
+              id="status-input"
               className="input-form"
               onBlur={(e) => {
                 setStatus(e.target.value);
@@ -124,7 +124,7 @@ function Modal({ show, handleClose, addHandler }) {
           <div className="button-form-wrapper">
             <button
               type="submit"
-              onClick={(e) =>
+              onClick={(e) => {
                 addHandler(e, {
                   name,
                   status,
@@ -133,8 +133,9 @@ function Modal({ show, handleClose, addHandler }) {
                   statusId,
                   type,
                   typeId,
-                })
-              }
+                });
+                handleClose();
+              }}
             >
               Submit
             </button>
