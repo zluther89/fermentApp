@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { string, func, shape } from "prop-types";
 
 function FermentComp({ ferment, removeHandler }) {
-  const { name, date, type, status } = ferment;
+  const { name, date, type, status, id } = ferment;
   return (
     <div className="ferment-item">
       <div className="ferment-header">{name}</div>

@@ -134,7 +134,7 @@ function Modal({ show, handleClose, addHandler }) {
                   type,
                   typeId,
                 });
-                handleClose();
+                handleClose(e);
               }}
             >
               Submit

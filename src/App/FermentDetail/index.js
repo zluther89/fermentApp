@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { useLocation } from "react-router-dom";
 
 function FermentDetail() {
+  const [editView, toggleEditView] = useState(false);
+
+  const toggleEdit = function () {
+    toggleEditView(!editView);
+  };
+
   const { ferment } = useLocation();
   const { name, status, date, type, description } = ferment;
 
@@ -15,7 +21,7 @@ function FermentDetail() {
         <div>
           <div className="ferment-detail-entry">
             <div className="ferment-detail-entry-header">Status:</div>
-            <div> {status}</div>
+            {!editView ? <div> {status}</div> : <input defaultValue={status} />}
           </div>
         </div>
         <div className="ferment-detail-entry">
@@ -24,11 +30,22 @@ function FermentDetail() {
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Desription: </div>
-          <div> {description}</div>
+          {!editView ? (
+            <div> {description}</div>
+          ) : (
+            <input defaultValue={description} />
+          )}
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Type: </div>
-          <div> {type}</div>
+          {!editView ? <div> {type}</div> : <input defaultValue={type} />}
+        </div>
+        <div className="ferment-detail-entry">
+          <div className="ferment-edit-button">
+            <button type="button" onClick={toggleEdit}>
+              edit
+            </button>
+          </div>
         </div>
       </div>
     </div>

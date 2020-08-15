@@ -7,14 +7,6 @@ import FermContainer from "./Ferments";
 import Modal from "./Modal";
 import FermentDetail from "./FermentDetail";
 
-// const sampleObj = {
-//   name: "test-name",
-//   type: "test-type",
-//   status: "test-status",
-//   date: "01/01/2001",
-//   description: "sample descriptions",
-// };
-
 function App() {
   const [show, setModal] = useState(false);
   const [ferments, setFerments] = useState([]);
@@ -37,13 +29,11 @@ function App() {
     event.preventDefault();
     try {
       Axios.post("/ferments", fermObj);
+      // optimistic loading
       setFerments([...ferments, fermObj]);
     } catch (e) {
       console.warn(e);
     }
-    // needs to set ferment in local state
-
-    // when back end is set up needs to post ferment to db
   }
 
   // at the moment this simply removes ferment from state, this will need to be in tandem with a function that
@@ -72,15 +62,19 @@ function App() {
 
   return (
     <div className="App">
-      <div className="nav-container">
-        <Nav>
-          <Modal show={show} handleClose={hideModal} addHandler={addFerment} />
-          <button type="submit" onClick={showModal}>
-            Start a ferment
-          </button>
-        </Nav>
-      </div>
       <Router>
+        <div className="nav-container">
+          <Nav>
+            <Modal
+              show={show}
+              handleClose={hideModal}
+              addHandler={addFerment}
+            />
+            <button type="submit" onClick={showModal}>
+              Start a ferment
+            </button>
+          </Nav>
+        </div>
         <Route
           exact
           path="/"

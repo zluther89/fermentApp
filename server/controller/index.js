@@ -3,6 +3,7 @@ const {
   selectAllTypes,
   selectAllStatus,
   insertNewFerment,
+  deleteFerment,
 } = require("../model");
 
 module.exports = {
@@ -20,10 +21,20 @@ module.exports = {
       try {
         const { body: data } = req;
         await insertNewFerment(data);
-        res.send(200);
+        res.sendStatus(200);
       } catch (e) {
         console.log(e);
         res.sendStatus(400);
+      }
+    },
+    delete: async function (req, res) {
+      console.log(req.body.id);
+      const id = req.body.id;
+      try {
+        deleteFerment(id);
+        res.send(200);
+      } catch (e) {
+        console.group(e);
       }
     },
   },
