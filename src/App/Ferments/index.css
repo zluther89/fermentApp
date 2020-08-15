@@ -21,6 +21,7 @@
   border-style: solid;
   border-radius: 5px;
   width: 24%;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
 }

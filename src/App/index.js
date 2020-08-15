@@ -15,6 +15,10 @@ function App() {
     return Axios.get("/ferments");
   }
 
+  async function deleteFerment(id) {
+    return Axios.delete("/ferments", { data: { id } });
+  }
+
   function showModal(e) {
     e.preventDefault();
     setModal(true);
@@ -38,9 +42,15 @@ function App() {
 
   // at the moment this simply removes ferment from state, this will need to be in tandem with a function that
   // stashes the ferment in a db
-  function removeFerment(ferm) {
-    const newFerments = ferments.filter((ferment) => ferment !== ferm);
-    setFerments(newFerments);
+  async function removeFerment(ferm) {
+    try {
+      const { id } = ferm;
+      await deleteFerment(id);
+      const newFerments = ferments.filter((ferment) => ferment !== ferm);
+      setFerments(newFerments);
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
   useEffect(() => {
