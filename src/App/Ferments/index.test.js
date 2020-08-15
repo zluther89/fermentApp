@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
+import { BrowserRouter as Router } from "react-router-dom";
 import FermentComp from "./ferment";
 import FermContainer from "./index";
-import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Single Ferment Tests", () => {
   const sampleObj = {

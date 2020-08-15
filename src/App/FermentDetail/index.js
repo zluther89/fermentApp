@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 function FermentDetail() {
   const [editView, toggleEditView] = useState(false);
 
-  const toggleEdit = function () {
+  const toggleEdit = function toggleEdit() {
     toggleEditView(!editView);
   };
 
