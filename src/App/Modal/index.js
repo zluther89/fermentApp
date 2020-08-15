@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { func, bool } from "prop-types";
-import axios from "axios";
 import NameForm from "./NameForm";
 import StatusForm from "./StatusForm";
+import TypeForm from "./TypeForm";
+import DateForm from "./DateForm";
+import DescriptionForm from "./DescriptionForm";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -15,32 +17,8 @@ function Modal({ show, handleClose, addHandler }) {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState();
   const [statusId, setStatusId] = useState();
-  const [typeOps, setTypeOps] = useState([{ status: "status" }]);
   const [type, setType] = useState();
   const [typeId, setTypeId] = useState();
-
-  async function getAllTypes() {
-    try {
-      const { data: res } = await axios.get("/types");
-      setTypeOps(res);
-    } catch (e) {
-      console.warn(e);
-    }
-  }
-
-  useEffect(() => {
-    getAllTypes();
-  }, []);
-
-  useEffect(() => {
-    let id;
-    typeOps.forEach((typeOp) => {
-      if (typeOp.name === type) {
-        id = typeOp.id;
-      }
-    });
-    setTypeId(id);
-  }, [type, typeOps]);
 
   return (
     <div className={showHide}>
@@ -53,37 +31,9 @@ function Modal({ show, handleClose, addHandler }) {
             status={status}
             setStatus={setStatus}
           />
-          <div className="label-wrapper">
-            <label htmlFor="type-input">Type:</label>
-            <select
-              name="type-input"
-              className="input-form"
-              onBlur={(e) => setType(e.target.value)}
-            >
-              {typeOps.map((t) => {
-                return <option value={t.name}>{t.name}</option>;
-              })}
-            </select>
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="date-input">Start Date:</label>
-            <input
-              name="date-input"
-              className="date-input"
-              type="date"
-              onChange={(e) => {
-                setDate(e.target.value);
-              }}
-            />
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="description-input">Description:</label>
-            <textarea
-              id="description-input"
-              className="input-form modal-description"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
+          <TypeForm setType={setType} type={type} setTypeId={setTypeId} />
+          <DateForm setDate={setDate} />
+          <DescriptionForm setDescription={setDescription} />
           <div className="button-form-wrapper">
             <button
               type="submit"
