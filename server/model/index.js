@@ -1,9 +1,7 @@
-const { Pool } = require("pg");
-
-db = require("../DBHelpers");
+const db = require("../DBHelpers");
 
 module.exports = {
-  getAllFerments: function () {
+  getAllFerments: function getAllFerments() {
     return db.query(`
     SELECT f.id, f.name, f.create_date, f.description, s.status, t.name AS type
     FROM ferments f
@@ -14,7 +12,7 @@ module.exports = {
     `);
   },
 
-  deleteFerment: function (fermID) {
+  deleteFerment: function deleteFerment(fermID) {
     try {
       const q = {
         text: `DELETE FROM ferments where id = $1`,
@@ -26,7 +24,7 @@ module.exports = {
     }
   },
 
-  insertNewFerment: function (data) {
+  insertNewFerment: function insertNewFerment(data) {
     const { name, description, date, typeId, statusId } = data;
     try {
       const q = {
@@ -39,11 +37,11 @@ module.exports = {
       console.log("error form model", e);
     }
   },
-  selectAllTypes: function () {
+  selectAllTypes: function selectAllTypes() {
     return db.query("SELECT * FROM type");
   },
 
-  selectAllStatus: function () {
+  selectAllStatus: function selectAllStatus() {
     return db.query("SELECT * FROM status");
   },
 };

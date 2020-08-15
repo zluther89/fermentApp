@@ -8,7 +8,7 @@ const {
 
 module.exports = {
   ferments: {
-    get: async function (req, res) {
+    get: async function get(req, res) {
       try {
         const { rows: response } = await getAllFerments();
         res.send(response);
@@ -17,7 +17,7 @@ module.exports = {
         res.sendStatus(400);
       }
     },
-    post: async function (req, res) {
+    post: async function post(req, res) {
       try {
         const { body: data } = req;
         await insertNewFerment(data);
@@ -27,9 +27,9 @@ module.exports = {
         res.sendStatus(400);
       }
     },
-    delete: async function (req, res) {
+    delete: async function deleteF(req, res) {
       console.log(req.body.id);
-      const id = req.body.id;
+      const { id } = req.body;
       try {
         deleteFerment(id);
         res.send(200);
@@ -39,7 +39,7 @@ module.exports = {
     },
   },
   types: {
-    get: async function (req, res) {
+    get: async function get(req, res) {
       try {
         const { rows: response } = await selectAllTypes();
         res.send(response);
@@ -50,7 +50,7 @@ module.exports = {
     },
   },
   status: {
-    get: async function (req, res) {
+    get: async function get(req, res) {
       try {
         const { rows: response } = await selectAllStatus();
         res.send(response);

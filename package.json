@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-plugin-import": "^2.22.0",
     "express": "^4.17.1",
     "pg": "^8.3.0",
     "prop-types": "^15.7.2",
