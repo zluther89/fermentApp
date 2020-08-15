@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { func, bool } from "prop-types";
 import axios from "axios";
+import NameForm from "./NameForm";
+import StatusForm from "./StatusForm";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -11,21 +13,11 @@ function Modal({ show, handleClose, addHandler }) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [statusOps, setStatusOps] = useState([{ status: "status" }]);
   const [status, setStatus] = useState();
   const [statusId, setStatusId] = useState();
-
   const [typeOps, setTypeOps] = useState([{ status: "status" }]);
   const [type, setType] = useState();
   const [typeId, setTypeId] = useState();
-  async function getAllStatus() {
-    try {
-      const { data: res } = await axios.get("/status");
-      setStatusOps(res);
-    } catch (e) {
-      console.warn(e);
-    }
-  }
 
   async function getAllTypes() {
     try {
@@ -37,19 +29,8 @@ function Modal({ show, handleClose, addHandler }) {
   }
 
   useEffect(() => {
-    getAllStatus();
     getAllTypes();
   }, []);
-
-  useEffect(() => {
-    let id;
-    statusOps.forEach((statusOp) => {
-      if (statusOp.status === status) {
-        id = statusOp.id;
-      }
-    });
-    setStatusId(id);
-  }, [status, statusOps]);
 
   useEffect(() => {
     let id;
@@ -66,30 +47,12 @@ function Modal({ show, handleClose, addHandler }) {
       <section className="modal-main">
         <div className="modal-header">Create New Ferment</div>
         <form className="new-ferment-form">
-          <div className="label-wrapper">
-            <label htmlFor="name-input">Name:</label>
-            <input
-              id="name-input"
-              className="input-form"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="status-input">Status:</label>
-            <select
-              id="status-input"
-              className="input-form"
-              onBlur={(e) => {
-                setStatus(e.target.value);
-              }}
-            >
-              {statusOps.map((st) => {
-                return <option value={st.status}>{st.status}</option>;
-              })}
-            </select>
-          </div>
+          <NameForm handler={setName} />
+          <StatusForm
+            handleStatusId={setStatusId}
+            status={status}
+            setStatus={setStatus}
+          />
           <div className="label-wrapper">
             <label htmlFor="type-input">Type:</label>
             <select

@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { string, func, shape } from "prop-types";
 
 function FermentComp({ ferment, removeHandler }) {
-  const { name, date, type, status } = ferment;
+  const { name, type, status } = ferment;
+  let { date } = ferment;
+  const dateRegEx = /([0-9]{4})([-])([0-9]{2})(-)([0-9]{2})(.*)/;
+  date = date.replace(dateRegEx, "$3$4$5$2$1");
+
   return (
     <div className="ferment-item">
       <div className="ferment-header">{name}</div>

@@ -26,7 +26,11 @@ function FermentDetail() {
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Date:</div>
-          <div> {date}</div>
+          {!editView ? (
+            <div> {date}</div>
+          ) : (
+            <input type="date" defaultValue={date} />
+          )}
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Desription: </div>
