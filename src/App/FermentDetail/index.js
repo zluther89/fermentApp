@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
-import { string, shape } from "prop-types";
+import { useLocation } from "react-router-dom";
 
-function FermentDetail({ ferment }) {
+function FermentDetail() {
+  const [editView, toggleEditView] = useState(false);
+
+  const toggleEdit = function toggleEdit() {
+    toggleEditView(!editView);
+  };
+
+  const { ferment } = useLocation();
   const { name, status, date, type, description } = ferment;
+
   return (
     <div className="ferment-detail-master-container">
       <div className="ferment-detail-header">
@@ -13,34 +21,39 @@ function FermentDetail({ ferment }) {
         <div>
           <div className="ferment-detail-entry">
             <div className="ferment-detail-entry-header">Status:</div>
-            <div> {status}</div>
+            {!editView ? <div> {status}</div> : <input defaultValue={status} />}
           </div>
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Date:</div>
-          <div> {date}</div>
+          {!editView ? (
+            <div> {date}</div>
+          ) : (
+            <input type="date" defaultValue={date} />
+          )}
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Desription: </div>
-          <div> {description}</div>
+          {!editView ? (
+            <div> {description}</div>
+          ) : (
+            <input defaultValue={description} />
+          )}
         </div>
         <div className="ferment-detail-entry">
           <div className="ferment-detail-entry-header">Type: </div>
-          <div> {type}</div>
+          {!editView ? <div> {type}</div> : <input defaultValue={type} />}
+        </div>
+        <div className="ferment-detail-entry">
+          <div className="ferment-edit-button">
+            <button type="button" onClick={toggleEdit}>
+              edit
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-FermentDetail.propTypes = {
-  ferment: shape({
-    name: string.isRequired,
-    type: string.isRequired,
-    status: string.isRequired,
-    date: string.isRequired,
-    description: string.isRequired,
-  }).isRequired,
-};
 
 export default FermentDetail;

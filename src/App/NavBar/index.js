@@ -1,13 +1,17 @@
 import React from "react";
-// import Modal from "../Modal";
 import "./index.css";
 import { element, arrayOf } from "prop-types";
+import { Link } from "react-router-dom";
 
 function Nav({ children }) {
   return (
     <div className="nav">
       <div>
-        <h1>Ferm.int</h1>
+        <h1>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            Ferm.int
+          </Link>
+        </h1>
       </div>
       <div>{children}</div>
       <div>

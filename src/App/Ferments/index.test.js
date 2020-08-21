@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
+import { BrowserRouter as Router } from "react-router-dom";
 import FermentComp from "./ferment";
 import FermContainer from "./index";
 
@@ -16,8 +17,10 @@ describe("Single Ferment Tests", () => {
   });
 
   it("should render the button container", () => {
-    const wrapper = shallow(
-      <FermentComp ferment={sampleObj} removeHandler={() => {}} />
+    const wrapper = mount(
+      <Router>
+        <FermentComp ferment={sampleObj} removeHandler={() => {}} />
+      </Router>
     );
     const buttonContainer = <button type="submit">Edit Details</button>;
     expect(wrapper.contains(buttonContainer)).toEqual(true);
@@ -39,7 +42,9 @@ describe("FermContainer tests", () => {
 
     const sampleFermSet = [sampleObj, sampleObj, sampleObj, sampleObj];
     const wrapper = mount(
-      <FermContainer ferments={sampleFermSet} removeHandler={() => {}} />
+      <Router>
+        <FermContainer ferments={sampleFermSet} removeHandler={() => {}} />
+      </Router>
     );
     expect(wrapper.find(".ferment-item")).toHaveLength(4);
   });

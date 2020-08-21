@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
 import { func, bool } from "prop-types";
+import NameForm from "./NameForm";
+import StatusForm from "./StatusForm";
+import TypeForm from "./TypeForm";
+import DateForm from "./DateForm";
+import DescriptionForm from "./DescriptionForm";
 
 function Modal({ show, handleClose, addHandler }) {
   const showHide = show
@@ -8,58 +13,42 @@ function Modal({ show, handleClose, addHandler }) {
     : "modal modal-display-none";
 
   const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  const [status, setStatus] = useState();
+  const [statusId, setStatusId] = useState();
+  const [type, setType] = useState();
+  const [typeId, setTypeId] = useState();
 
   return (
     <div className={showHide}>
       <section className="modal-main">
         <div className="modal-header">Create New Ferment</div>
         <form className="new-ferment-form">
-          <div className="label-wrapper">
-            <label htmlFor="name-input">Name:</label>
-            <input
-              id="name-input"
-              className="input-form"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="status-input">Status:</label>
-            <input
-              id="status-input"
-              className="input-form"
-              onChange={(e) => setStatus(e.target.value)}
-            />
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="date-input">Start Date:</label>
-            <input
-              name="date-input"
-              className="date-input"
-              type="date"
-              onChange={(e) => {
-                setDate(e.target.value);
-              }}
-            />
-          </div>
-          <div className="label-wrapper">
-            <label htmlFor="description-input">Description:</label>
-            <textarea
-              id="description-input"
-              className="input-form modal-description"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
+          <NameForm handler={setName} />
+          <StatusForm
+            handleStatusId={setStatusId}
+            status={status}
+            setStatus={setStatus}
+          />
+          <TypeForm setType={setType} type={type} setTypeId={setTypeId} />
+          <DateForm setDate={setDate} />
+          <DescriptionForm setDescription={setDescription} />
           <div className="button-form-wrapper">
             <button
               type="submit"
-              onClick={(e) =>
-                addHandler(e, { name, status, date, description })
-              }
+              onClick={(e) => {
+                addHandler(e, {
+                  name,
+                  status,
+                  date,
+                  description,
+                  statusId,
+                  type,
+                  typeId,
+                });
+                handleClose(e);
+              }}
             >
               Submit
             </button>

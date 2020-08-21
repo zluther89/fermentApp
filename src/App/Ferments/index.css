@@ -20,7 +20,10 @@
   border-color: black;
   border-style: solid;
   border-radius: 5px;
-  min-width: 24%;
+  width: 24%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
 }
 .ferment-header {
   font-size: 1.6rem;
@@ -31,6 +34,7 @@
   border-color: black;
   border-width: 0.1rem;
   padding: 5%;
+  width: 75%;
 }
 .ferment-text {
   text-align: left;
@@ -48,4 +52,8 @@
   font-weight: bold;
   border-color: black;
   border-radius: 6px;
+}
+
+.button-container {
+  margin-top: auto;
 }
